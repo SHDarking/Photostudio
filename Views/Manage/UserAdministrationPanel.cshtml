@@ -1,0 +1,102 @@
+@using System.Security.Claims
+@model List<Booking>
+@{
+    ViewData["Title"] = "Личный кабинет";
+}
+<h2 class="admin_panel">Учетная запись пользователя</h2>
+<p class="hello_user">Добрый день,  @User.FindFirst(x => x.Type == ClaimTypes.Name).Value!</p>
+
+@if (User.FindFirst(x => x.Type == ClaimTypes.Role).Value == "User")
+{
+    <h3 class="admin_panel_name">История заказов пользователя</h3>
+}
+else
+{
+    <h3 class="admin_panel_name">Панель миграции данных</h3>
+    <button class="m-auto btn btn-outline-primary" id="MigrateButton" asp-action="MigrationData" asp-controller="Manage">Запустить миграцию данных</button>
+    if (ViewBag.ShowMongoFuction)
+    {
+        <h3 class="admin_panel_name">Панель репликации</h3>
+        <a class="m-auto btn btn-outline-primary" id="ReplicationButton" asp-action="Replication" asp-controller="Manage">Проверка репликации</a>
+        <h3 class="admin_panel_name">Панель агрегации</h3>
+        <a class="m-auto btn btn-outline-primary" id="AggregationButton" asp-action="Aggregation" asp-controller="Manage">Проверка агрегации</a>
+    }
+    <h3 class="admin_panel_name">Панель администратора управления заказами</h3>
+}
+@if (User.FindFirst(x => x.Type == ClaimTypes.Role).Value == "User")
+    {
+        <table class="account_booking">
+        <tr class="account_booking_item">
+            <td><span>Номер <br> заказа</span></td>
+            <td><span>Дата <br> создания</span></td>
+            <td><span>Название <br> зала</span></td>
+            <td><span>Дата и время <br> начала оренды</span></td>
+            <td><span>Дата и время <br> окончания оренды</span></td>
+            <td><span>Цена <br> заказа</span></td>
+            <td><span>Статус</span></td>
+        </tr>
+        @foreach (var booking in Model)
+        {
+            <tr class="account_booking_item">
+                <td><span>@booking.IdBooking</span></td>
+                <td><span>@booking.CreatingDateTime</span></td>
+                <td><span>@booking.RentedHall.Name</span></td>
+                <td><span>@booking.StartHallReserving</span></td>
+                <td><span>@booking.EndHallReserving</span></td>
+                <td><span>@booking.TotalCost</span></td>
+                <td><span>@booking.Status</span></td>
+            </tr>
+        }
+        </table> 
+    }
+    else
+        {
+        <table class="account_booking admin-check">
+        <tr class="account_booking_item ">
+            <td><span>Номер <br> заказа</span></td>
+            <td><span>Имя <br> клиента</span></td>
+            <td><span>Фамилия <br> клиента</span></td>
+            <td><span>Номер <br> телефона</span></td>
+            <td><span>Дата <br> создания</span></td>
+            <td><span>Название <br> зала</span></td>
+            <td><span>Дата и время <br> начала оренды</span></td>
+            <td><span>Дата и время <br> окончания оренды</span></td>
+            <td><span>Цена <br> заказа</span></td>
+            <td><span>Статус</span></td>
+            <td><span>Управление</span></td>
+        </tr>
+        @foreach (var booking in Model)
+        {
+            <tr class="account_booking_item">
+                <td><span>@booking.IdBooking</span></td>
+                <td><span>@booking.User.UserName</span></td>
+                <td><span>@booking.User.Surname</span></td>
+                <td><span>@booking.User.PhoneNumber</span></td>
+                <td><span>@booking.CreatingDateTime</span></td>
+                <td><span>@booking.RentedHall.Name</span></td>
+                <td><span>@booking.StartHallReserving</span></td>
+                <td><span>@booking.EndHallReserving</span></td>
+                <td><span>@booking.TotalCost</span></td>
+                <td><span>@booking.Status</span></td>
+                <td class="control_of_booking">
+                    <form method="post">
+                        <input type="number" value="@booking.IdBooking" name="idBooking">
+                        @if (booking.Status != "Подтвержден")
+                        {
+                            <button asp-action="UpdateBookingStatus" asp-controller="Manage" class="update_button">Подтвердить</button>
+                            <button asp-controller="Manage" asp-action="DeleteBooking" class="cancel_button">Удалить</button>
+                        }
+                        else
+                        {
+                            <button asp-action="UpdateBookingStatus" asp-controller="Manage" class="update_button">Выполнен</button>
+                            <button asp-controller="Manage" asp-action="CancelBooking" class="cancel_button">Отменить</button>
+                        }
+                    </form>
+                </td>
+            </tr>
+             
+        }
+        </table> 
+    }
+<script src="~/JS/Ajax_for_db_migrate.js"></script>
+

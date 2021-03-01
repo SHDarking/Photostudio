@@ -1,0 +1,314 @@
+/* index and navigation */
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    border-bottom: 1px dotted grey;
+    margin-bottom: 10px;
+}
+
+nav a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    padding: 15px 10px 15px 10px;
+    width: 100px;
+}
+
+nav a:hover {
+    background-color: Gainsboro;
+    transition-duration: .8s;
+    color: black;
+}
+
+.index_page {
+    margin: auto;
+    text-align: center;
+}
+
+/* login navigation */
+
+.login:hover {
+    background-color: PaleGreen;
+}
+
+.logout:hover {
+    background-color: LightCoral;
+}
+
+/* catalog page style */
+
+.catalog_table {
+    width: inherit;
+    margin: 0;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.catalog_name {
+    text-align: center;
+}
+
+.catalog_table .catalog_table_item {
+    margin: 30px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+.catalog_table .catalog_hall_name,.catalog_hall_price {
+    text-align: center;
+}
+
+/* user control panel */
+
+.account_booking {
+    margin: 0 auto 40px;
+    border: 1px solid black;
+   width: 80%;
+    
+}
+
+.account_booking .account_booking_item {
+    font-size: 14px;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    text-align: center;
+    
+}
+
+
+.admin-check {
+    width: 90%;
+}
+
+.admin-check .account_booking_item {
+    display: grid;
+    grid-template-columns: 5% 7% 7% 10% 8% 9% 13% 13% 6% 7% 15%;
+    height: 60px;
+}
+
+.account_booking_item:nth-child(2n+1) {
+    background-color: rgb(230,230,245);
+    
+}
+
+.account_booking_item:first-child {
+    background-color: rgb(240,240,240);
+    font-size: 14px;
+}
+
+
+.account_booking_item:last-child {
+    border-bottom: none;
+}
+
+.account_booking_item td {
+    display: flex;
+    text-align: center;
+    border-right: 1px solid black;
+    width: 100%;
+}
+
+.account_booking_item span {
+    margin: auto;
+}
+
+.account_booking_item td:last-child {
+    border-right: none;
+}
+
+.account_booking_item td.control_of_booking {
+    background-color: white;
+}
+
+.control_of_booking form {
+    width:100%;
+    height: inherit;
+    display: flex;
+    justify-content: space-around;
+}
+
+.control_of_booking button{
+    height: 70%;
+    margin: auto;
+}
+
+.update_button {
+    border: 2px solid mediumseagreen;
+    background-color: rgba(190,250,190,.2);
+    transition-duration: .5s;
+}
+
+.update_button:hover {
+    background-color: rgba(190,250,190,.8);
+    
+}
+
+.cancel_button {
+    border: 2px solid rgb(200,50,50);
+    background-color: rgba(250,190,190,.3);
+    box-shadow: none;
+}
+
+.cancel_button:hover {
+    background-color: rgba(250,190,190,.9);
+    transition-duration: .6s;
+}
+
+.account_booking_item input {
+    display: none;
+    visibility: hidden;
+}
+
+.account_panel {
+    margin:auto;
+    padding: 40px 50px;
+    height: auto;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 0 0 10px grey ;
+}
+
+.account_panel h4{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.account_panel form {
+    display: flex;
+    flex-direction: column;
+}
+
+.account_panel section {
+    margin-bottom: 20px;
+}
+
+.account_panel label {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.account_panel input {
+    padding: 5px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+
+.account_panel p {
+    font-size: 12px;
+    text-align: center;
+}
+
+.account_panel a {
+    text-decoration: none;
+}
+
+.account_panel .login_button {
+    background-color: white;
+    border: 2px solid LimeGreen;
+    box-shadow: none;
+    margin:0 auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.account_panel .login_button:hover {
+    background-color: PaleGreen;
+    transition-duration: .8s;
+}
+
+.account_panel .registr_button {
+    background-color: white;
+    border: 2px solid DarkCyan;
+    box-shadow: none;
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+}
+
+.account_panel .registr_button:hover {
+    background-color: PaleTurquoise;
+    transition-duration: .8s;
+}
+
+.admin_panel, .admin_panel_name {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.hello_user {
+    text-align:center;
+}
+
+/* calendar */
+
+
+
+.calendar .col {
+    padding: 0;
+}
+
+
+.calendar .container-fluid {
+    padding: 0 10px 0 5px;
+}
+
+.dataTimeCell {
+    width: 50px;
+    height: 30px;
+}
+
+.calendarHeader {
+    background-color: #f4f5f6;
+    padding: 10px 0;
+}
+
+.col .dataTimeCell {
+    background-color: #f4f5f6;
+    border-collapse: collapse;
+}
+
+.col .completeOrder {
+    background-color: #07ca71;
+}
+
+.col .rentedTime {
+    background-color: #3a84fe;
+}
+
+.col .firstElement {
+    width: 100px;
+    border-left: none;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: none;
+    padding: 0;
+    text-align: center;
+}
+
+#hall_select {
+    width: 150px;
+}
+
+.time-select {
+    width: 100px;
+}

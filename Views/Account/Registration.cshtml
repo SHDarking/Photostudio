@@ -1,0 +1,30 @@
+@model RegisterModel
+@{
+    ViewData["Title"] = "Регистрация";
+}
+<article class=" account_panel">
+    <h4>Регистрация</h4>
+    <form asp-action="Registration" asp-controller="Account" method="post">
+        <section>
+            <label>Имя</label>
+            <input asp-for="Name" type="text" placeholder="Имя">
+        </section>
+        <section>
+            <label>Фамилия</label>
+            <input asp-for="Surname" type="text" placeholder="Фамилия">
+        </section>
+        <section>
+            <label>Номер телефона</label>
+            <input asp-for="PhoneNumber" type="tel" placeholder="Номер телефона" >
+        </section>
+        <section>
+            <label>Email</label>
+            <input asp-for="Email" type="email" placeholder="Email">
+        </section>
+        <section>
+            <label>Пароль</label>
+            <input asp-for="Password" type="password" placeholder="Пароль">
+        </section>
+        <button class="registr_button">Зарегестрироваться</button>
+    </form>
+</article>

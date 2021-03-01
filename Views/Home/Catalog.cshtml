@@ -1,0 +1,16 @@
+@model List<Hall>
+@{
+    ViewData["Title"] = "Каталог залов";
+}
+<h2 class="catalog_name">Каталог залов</h2>
+<article class="catalog_table">
+@foreach (var hall in @Model)
+{
+    <div class="catalog_table_item">
+        <p class="catalog_hall_name">@hall.Name</p>
+        <p class="catalog_hall_description">@hall.Description</p>
+        <p class="catalog_hall_price">@hall.Price грн</p>
+    </div>
+    
+}
+</article>

@@ -1,0 +1,79 @@
+@model CreateBookingModel
+@{
+    DateTime dateNow = DateTime.Now;
+}
+<article class="container-fluid d-flex flex-row  justify-content-between">
+    <div class="col calendar p-3 border border-1 border-secondary" id="calendar">
+        
+    </div>
+    <div class="col px-3">
+        <form asp-action="CreateBooking" asp-controller="Reserving" class="w-50 m-auto mt-4 d-flex flex-column">
+            <h4 class="m-auto mb-4">Форма заказа</h4>
+            <div class="form-group m-auto mb-2">
+                <label class="mb-2">Выберете зал:</label>
+                @Html.DropDownList("HallSelect", ViewBag.Hall as SelectList, new {@class = "form-select mb-2"})
+            </div>
+            <div class="form-group mb-3">
+                <label for="startDateHallsRent" class="mb-2">Выберите дату, время начала работы:</label>
+                <div class="input-group">
+                    <input type="date" class="form-control" id="startDateHallsRent" name="StartDateReserving" min="@dateNow.ToString("yyyy-MM-dd")" value="@if (Model != null) {@Model.StartDateReserving.ToString("yyyy-MM-dd")}" required="">
+                    <select class="form-select time-select" id="startTimeHallsRent" name="StartTimeReserving"  required="">
+                        <option selected disabled>Время:</option>
+                        @for (int i = 0; i <= 23; i++)
+                        {
+                            @if (Model != null && i == Model.StartTimeReserving)
+                            {
+                                <option value="@i" selected>@i</option>
+                            }
+                            else
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        }
+                    </select>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">:00</span>
+                    </div>
+                    <div class="invalid-feedback">
+                        Пожалуйста, укажите правильно дату и время
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="endDateHallsRent" class="mb-2">Выберите дату, время завершения работы:</label>
+                <div class="input-group">
+                    <input type="date" class="form-control" id="endDateHallsRent" name="EndDateReserving" min="@dateNow.ToString("yyyy-MM-dd")" value="@if (Model != null) {@Model.EndDateReserving.ToString("yyyy-MM-dd")}" required="">
+                    <select class="form-select time-select" id="endTimeHallsRent" name="EndTimeReserving" required="">
+                        <option selected disabled>Время:</option>
+                        @for (int i = 0; i <= 23; i++)
+                        {
+                            @if (Model != null && i == Model.EndTimeReserving)
+                            {
+                                <option value="@i" selected>@i</option>
+                            }
+                            else
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        }
+                    </select>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">:00</span>
+                    </div>
+                    <div class="invalid-feedback">
+                        Пожалуйста, укажите правильно дату и время
+                    </div>
+                </div>
+            </div>
+            <div class="form-group d-flex my-3">
+                 <button type="submit" class="m-auto p-2 btn btn-outline-success" asp-action="CreateBooking" asp-controller="Reserving">Оформить заказ</button>
+            </div>
+        </form>
+    </div>
+         
+</article>
+<script src="~/JS/connection_ajax.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+

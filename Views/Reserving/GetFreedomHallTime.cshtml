@@ -1,0 +1,61 @@
+@model Calendar
+@{ 
+    DateTime time = new DateTime();
+}
+<div class="mb-4 d-flex align-items-center justify-content-around" id="@Model.IdHall">
+        <span id="@Model.StartWeekDate.ToString("d")">@Model.CalendarInterval()</span>
+        @if (Model.StartWeekDate > DateTime.Now)
+        {
+            <div class="btn btn-outline-secondary prevWeek">@(new string("<"))</div>
+        }
+        else
+        {
+            <div class="btn btn-outline-secondary disabled">@(new string("<"))</div>
+        }
+        <div class="btn btn-outline-secondary currentWeek">Сегодня</div>
+        <div class="btn btn-outline-secondary nextWeek">></div>
+    </div>
+<div class="container-fluid mb-3 text-center">
+    <div class="row calendarHeader mb-2 ">
+        <div class="col-2 firstElement">Время</div>
+        <div class="col ">ПН</div>
+        <div class="col ">ВТ</div>
+        <div class="col ">СР</div>
+        <div class="col ">ЧТ</div>
+        <div class="col ">ПТ</div>
+        <div class="col ">СБ</div>
+        <div class="col ">ВС</div>
+    </div>
+    <div class="row">
+        <div class="col-2 firstElement"></div>
+        @for (int i = 0; i < Model.IntervalDays.Length; i++)
+        {
+            <div class="col">@Model.IntervalDaysToString(i)</div>
+        }
+    </div>
+    </div>
+    <div class="container-fluid mb-2">
+        @for (int i = 0; i < 24; i++)
+         {
+            <div class="row">
+            <div class="col-2 firstElement">@time.AddHours(i).ToString("HH:mm") - @time.AddHours(i+1).ToString("HH:mm")</div>
+                
+                @for (int j = 1; j <= 7; j++)
+                {
+                    if (Model.isSuccessOrder(i,j))
+                    {
+                        <div class="col dataTimeCell border completeOrder"></div>
+                    }
+                    else if (Model.isContainedTimeInInterval(i, j))
+                    {
+                        <div class="col dataTimeCell border rentedTime"></div>
+                    }
+                    else
+                    {
+                        <div class="col dataTimeCell border"></div>
+                    }
+                }
+            </div>
+         }
+    </div>
+

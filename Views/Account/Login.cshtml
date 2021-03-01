@@ -1,0 +1,19 @@
+@model LoginModel
+@{
+    ViewData["Title"] = "Вход";
+}
+<article class="account_panel">
+    <h4>Вход в учетную запись</h4>
+    <form asp-action="Login" asp-controller="Account" method="post">
+        <section class="email_container">
+            <label>Логин</label>
+            <input asp-for="Email" type="email" placeholder="Email">
+        </section>
+        <section class="password_container">
+            <label>Пароль</label>
+            <input asp-for="Password" type="password" placeholder="Пароль">
+        </section>
+        <p>Нет аккаунта, <a asp-action="Registration" asp-controller="Account">зарегестрируйтесь</a></p>
+        <button class="login_button">Войти</button>
+    </form>
+</article>

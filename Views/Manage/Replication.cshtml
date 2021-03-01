@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "Панель репликации";
+}
+<div class="d-flex flex-column w-75 mx-auto mt-3 mb-5">
+    <h3 class="text-center mb-4">Проверка репликаци</h3>
+    <select name="writeConcern" id="writeConcern" class="w-25 mb-4 mx-auto">
+        <option disabled selected value="0">Выберете режим записи</option>
+        <option value="1">W1</option>
+        <option value="2">UNACKNOWLEDGED</option>
+        <option value="3">MAJORITY</option>
+    </select>
+    <button class="mx-auto mb-4 btn btn-outline-primary" id="StartReplication" asp-action="Replication" asp-controller="Manage">Запустить проверку</button>
+</div>
+<table class="account_booking" id="tableUsers">
+   
+</table> 
+<script src="~/JS/Ajax_for_db_migrate.js"></script>
