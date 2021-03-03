@@ -95,7 +95,7 @@ namespace Photostudio.Controllers
             return PartialView();
         }
         [Authorize]
-        public async Task<IActionResult> Aggregation()
+        public IActionResult Aggregation()
         {
             if (primaryDbType == TypeDatabases.MongoDB)
             {
@@ -105,7 +105,7 @@ namespace Photostudio.Controllers
             return RedirectToAction("UserAdministrationPanel");
         }
         [Authorize]
-        public async Task<IActionResult> AggregationResult(int aggregationAction)
+        public IActionResult AggregationResult(int aggregationAction)
         {
             if (primaryDbType == TypeDatabases.MongoDB)
             {

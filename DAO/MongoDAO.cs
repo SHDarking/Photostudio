@@ -55,8 +55,8 @@ namespace Photostudio.DAO
                 new BsonDocument("email",email),
                 new BsonDocument("password",password)
             });
-            var user =  collection.Find(filter).First();
-            if (user == null) return null;
+            var user = await collection.Find(filter).FirstOrDefaultAsync();
+            if (user is null) return null;
             var customer = new User();
             customer.UserName = user["name"].AsString;
             customer.Surname = user["surname"].AsString;

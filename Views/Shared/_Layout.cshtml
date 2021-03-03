@@ -9,10 +9,22 @@
 </head>
 <body>
 <header class="container-fluid">
-    <nav class="navbar navbar-dark bg-dark">
-        <ul>
-            
-        </ul>
+    <nav class="row">
+        <a asp-action="Index" asp-controller="Home" class="col">Домашняя</a>
+        <a asp-action="Catalog" asp-controller="Home" class="col">Каталог</a>
+        @if (User.Identity.IsAuthenticated)
+        {
+            @if(User.IsInRole("User")) {
+                <a asp-action="CreateBooking" asp-controller="Reserving" class="col">Аренда зала</a>
+            }
+            <a asp-action="UserAdministrationPanel" asp-controller="Manage" class="col">Личный кабинет</a>
+            <a asp-action="Logout" asp-controller="Account" class="col logout">Выйти</a>
+        }
+        else
+        {
+            <a asp-action="Registration" asp-controller="Account" class="col">Регистрация</a>
+            <a asp-action="Login" asp-controller="Account" class="col login">Войти</a>
+        }
     </nav>
 </header>
 @RenderBody()
