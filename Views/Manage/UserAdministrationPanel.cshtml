@@ -12,15 +12,6 @@
 }
 else
 {
-    <h3 class="admin_panel_name">Панель миграции данных</h3>
-    <button class="m-auto btn btn-outline-primary" id="MigrateButton" asp-action="MigrationData" asp-controller="Manage">Запустить миграцию данных</button>
-    if (ViewBag.ShowMongoFuction)
-    {
-        <h3 class="admin_panel_name">Панель репликации</h3>
-        <a class="m-auto btn btn-outline-primary" id="ReplicationButton" asp-action="Replication" asp-controller="Manage">Проверка репликации</a>
-        <h3 class="admin_panel_name">Панель агрегации</h3>
-        <a class="m-auto btn btn-outline-primary" id="AggregationButton" asp-action="Aggregation" asp-controller="Manage">Проверка агрегации</a>
-    }
     <h3 class="admin_panel_name">Панель администратора управления заказами</h3>
 }
 @if (User.FindFirst(x => x.Type == ClaimTypes.Role).Value == "User")

@@ -4,8 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
-using Photostudio.DAO;
 using Photostudio.Models;
+using Photostudio.DAO;
+
 
 
 namespace Photostudio.Controllers
