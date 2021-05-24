@@ -29,7 +29,7 @@ namespace Photostudio
                 .AddCookie(options => //CookieAuthenticationOptions
                 {
                     options.LoginPath = new PathString("/Account/Login");
-                    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(40);
                     options.Cookie.Name = ".Photostudio.Cookies";
                 });
             services.AddControllersWithViews(mvcOptions => { mvcOptions.EnableEndpointRouting = false; });
@@ -40,7 +40,8 @@ namespace Photostudio
         {
             app.UseStaticFiles();
             app.UseRouting();
- 
+            
+            app.UseSession();
             app.UseAuthentication();    // аутентификация
             app.UseAuthorization();     // авторизация
 
