@@ -21,8 +21,5 @@ namespace Photostudio.DAO
         public Task<List<DateTime[]>> GetCalendarHall(int id,DateTime dayStartFindWeek,DateTime dayEndFindWeek);
         public Task<List<Hall>> GetAllHalls();
 
-        public Task<Dictionary<string,List<Dictionary<string,string>>>> ReadDataForMigrationToOtherDb();
-        public Task WriteDataToDbAfterRead(Dictionary<string,List<Dictionary<string,string>>> tables);
-
     }
 }
